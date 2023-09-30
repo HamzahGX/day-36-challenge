@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+</head>
+<body>
+  <h1>Welcome to the Dashboard, <%= username %>!</h1>
+  <a href="/create">Create a New Blog Post</a>
+  <h2>Your Blog Posts:</h2>
+  <ul>
+    <% blogPosts.forEach((post, index) => { %>
+      <li>
+        <a href="/posts/<%= index %>"><%= post.title %></a>
+        <a href="/edit/<%= index %>">Edit</a>
+        <a href="/delete/<%= index %>">Delete</a>
+      </li>
+    <% }); %>
+  </ul>
+  <a href="/logout">Logout</a>
+</body>
+</html>

@@ -1,0 +1,39 @@
+Documentation
+Introduction
+
+Welcome to the documentation for our Product Information API. 
+This API serves as a reliable source for accessing product data,
+ offering insights into various product details.
+
+RESTful Conventions and Principles
+
+Our API strictly follows RESTful conventions and principles to provide a structured and intuitive interaction with product information:
+
+Resource Naming
+
+Resource names are designed as nouns in plural form. For instance, `/products` signifies a collection of products, providing a clear and consistent naming pattern.
+
+HTTP Methods
+
+We employ HTTP methods in a meaningful manner:
+
+- `GET` is used for retrieving product information, making it easy to access and view product details.
+- We anticipate implementing `POST`, `PUT`, and `DELETE` methods in the future to facilitate CRUD operations for managing products effectively.
+
+Response Codes
+
+Our API ensures that the appropriate HTTP response codes are returned to indicate request outcomes:
+
+- `200 OK`: Successfully fetching product information, ensuring a positive user experience.
+- `404 Not Found`: For cases where a requested product is not available, providing clarity in response.
+- `500 Internal Server Error`: In the rare event of unexpected server issues, users receive a clear indication of a problem.
+
+Audit Results
+
+In our meticulous audit of the API, we discovered the following aspects that align with RESTful conventions:
+
+- URL Structure**: Our URLs are thoughtfully structured, reflecting the resources and actions they represent, 
+enhancing clarity and user-friendliness.
+  
+- HTTP Methods**: Each HTTP method is applied appropriately, contributing to an intuitive and logical API design.
+
