@@ -1,10 +1,14 @@
 const express = require('express');
+const path =require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const app = express();
+
+app.use(express.static('public'));
+
 const port = process.env.PORT || 3000;
 
 // Data Structure for Users
@@ -12,12 +16,12 @@ const users = [
   {
     id: 1,
     username: 'user1',
-    password: '$2b$10$02VKyd5C0Gd0lUUDXB2Z..FMrYYunXDN14KNPzVZ7WkWsSgI0kmG2', // Hashed password for 'password1'
+    password: '$2b$10$02VKyd5C0Gd0l2Z..FMrYYunXDN14KNPzVZ7WkWsSgI0kmG2', // Hashed password for 'password1'
   },
   {
     id: 2,
     username: 'user2',
-    password: '$2b$10$6ePvKBK3.s.ROZLobnMCUOJJ1Hsz2H0IKZTVtw2DgOpn.Vt7pm3RO', // Hashed password for 'password2'
+    password: '$2b$10$6ePvKBK3.s.ROZHsz2H0IKZTVtw2DgOpn.Vt7pm3RO', // Hashed password for 'password2'
   },
 ];
 
@@ -49,13 +53,14 @@ const blogPosts = [
 
 // Configure middleware
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Initialize session middleware
 app.use(
   session({
-    secret: 'bigsecrets',
+    secret: 'BiNIM',
     resave: false,
     saveUninitialized: false,
   })
@@ -101,7 +106,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-  res.render('register');
+  res.render('register.ejs');
 });
 
 app.post('/register', async (req, res) => {
@@ -152,8 +157,6 @@ app.get('/blog', (req, res) => {
   res.render('blog', { blogPosts });
 });
 
-// Additional blog post routes (create, read, update, delete)
-// ...
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

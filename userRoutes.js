@@ -50,9 +50,16 @@ router.post('/login', passport.authenticate('local', {
 }));
 
 // Logout route
-router.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/login');
+app.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      // Handle any error that may occur during logout
+      console.error(err);
+      return res.status(500).json({ message: 'Logout failed' });
+    }
+    // Successful logout
+    res.redirect('/login');
+  });
 });
 
 module.exports = router;
